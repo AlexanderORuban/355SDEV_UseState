@@ -7,9 +7,7 @@ const RestaurantForm = ({ addRestaurant }) => {
         phone: "",
         cuisine: "",
         rating: 5,
-        image: "",
-        hours: {},
-        menu: []
+        image: ""
     });
 
     const handleChange = e => {
@@ -59,50 +57,6 @@ const RestaurantForm = ({ addRestaurant }) => {
                     <input type="text" name='image' value={formData.image} onChange={handleChange} />
                 </label>
                 <br />
-                <fieldset>
-                    <legend>Hours</legend>
-                    {["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].map((day) => (
-                        <label key={day}>
-                            {day.charAt(0).toUpperCase() + day.slice(1)}:
-                            <input
-                                type="text"
-                                name={`hours.${day}`}
-                                value={formData.hours?.[day] || ""}
-                                onChange={handleChange}
-                            />
-                            <br />
-                        </label>
-                    ))}
-                </fieldset>
-
-                <fieldset>
-                    <legend>Menu Items</legend>
-                    {formData.menu?.map((menuItem, index) => (
-                        <div key={index}>
-                            <label>
-                                Item:
-                                <input
-                                    type="text"
-                                    name={`menu[${index}].item`}
-                                    value={menuItem.item}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                            <label>
-                                Price:
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    name={`menu[${index}].price`}
-                                    value={menuItem.price}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                            <br />
-                        </div>
-                    ))}
-                </fieldset>
-
                 <button type="submit">Add Restaurant</button>
             </form>
         </div>
